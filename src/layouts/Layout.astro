@@ -1,23 +1,58 @@
+---
+import Navbar from '../components/Navbar.astro';
+import '../styles/global.css';
+
+// Aquí definimos qué "propiedades" puede recibir este layout
+interface Props {
+	title: string;
+	description?: string; // Opcional, para el SEO de tu wiki
+}
+
+const { title, description = "Tienda de videojuegos Darlios" } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		
+		<!-- Google Fonts para un look gaming si quieres -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<slot />
+		<Navbar />
+		
+		<main class="container">
+			<slot /> <!-- ¡IMPORTANTE! Aquí es donde Astro inyectará el contenido de tus páginas -->
+		</main>
+
+		<footer>
+			<p>&copy; 2026 DARLIOS - Gaming Store & Wiki</p>
+		</footer>
 	</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+<style is:global>
+	/* Estilos que solo afectan al layout */
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem;
+		min-height: calc(100vh - 150px); /* Para que el footer no flote en medio */
+	}
+
+	footer {
+		text-align: center;
+		padding: 2rem;
+		background-color: var(--nav-bg);
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 0.8rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
 	}
 </style>

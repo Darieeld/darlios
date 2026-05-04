@@ -1,0 +1,33 @@
+.pixel-art {
+  image-rendering: pixelated;       /* Para navegadores modernos */
+  image-rendering: crisp-edges;     /* Para versiones antiguas/específicas */
+  -ms-interpolation-mode: nearest-neighbor; /* Para Explorer de la vieja escuela */
+}
+
+/* Si quieres que TODAS las imágenes del sitio sean nítidas por defecto: */
+img {
+  image-rendering: pixelated;
+}
+
+:root {
+  --nav-bg: #111821;    /* El negro azulado del navbar */
+  --body-bg: #1c4468;   /* El azul petróleo del fondo */
+  --text-primary: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--body-bg);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif; /* Usaremos una fuente limpia */
+}
+
+/* Forzar que el pixel art no se vea borroso */
+img {
+  image-rendering: pixelated;
+}
