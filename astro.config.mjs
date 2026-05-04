@@ -2,4 +2,4 @@
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-export default defineConfig({ site: '[https://darlios.com](https://darlios.com)' });
+export default defineConfig({ site: 'https://darlios.com' });
